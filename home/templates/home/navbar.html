@@ -1,0 +1,27 @@
+<header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-primary via-blue-500 to-secondary rounded-xl transform rotate-3"></div>
+          <div class="absolute inset-0 bg-white rounded-xl flex items-center justify-center">
+            <span class="text-2xl font-['Pacifico'] bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">TEP</span>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <h1 class="text-xl font-['Pacifico'] text-gray-800">Technology Evolution</h1>
+          <span class="text-sm text-gray-500 -mt-1">Portal</span>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center space-x-6">
+        <a href="{% url 'home' %}" class="text-gray-700 hover:text-primary font-medium">Home</a>
+        <a href="{% url 'tutorials' %}" class="text-gray-700 hover:text-primary font-medium">Tutorials</a>
+        <a href="{% url 'roadmap' %}" class="text-gray-700 hover:text-primary font-medium">Roadmaps</a>
+        <a href="{% url 'community' %}" class="text-gray-700 hover:text-primary font-medium">Community</a>
+        <a href="{% url 'news' %}" class="text-gray-700 hover:text-primary font-medium">News</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <button class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-button font-medium hover:bg-gray-50 whitespace-nowrap">Sign In</button>
+        <button class="bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-primary/90 whitespace-nowrap">Sign Up</button>
+      </div>
+    </div>
+  </header>

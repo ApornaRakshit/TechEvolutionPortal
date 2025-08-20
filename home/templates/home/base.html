@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Technology Evolution Portal{% endblock %}</title>
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2563EB",
+            secondary: "#10B981"
+          },
+          borderRadius: {
+            button: "8px"
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-gray-50">
+  <!-- Navbar -->
+  {% include "home/navbar.html" %}
+
+  <!-- Content -->
+  {% block content %}{% endblock %}
+
+  <!-- Footer -->
+  {% include "home/footer.html" %}
+</body>
+</html>

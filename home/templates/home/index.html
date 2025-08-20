@@ -1,0 +1,173 @@
+{% extends "home/base.html" %}
+{% block title %}Home - TEP{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section relative bg-gray-800 text-white">
+  <div class="container mx-auto px-4 py-20 md:py-32">
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">
+      Empowering Tech Journeys in Bangladesh
+    </h1>
+    <p class="text-lg md:text-xl mb-8 text-gray-200">
+      Your ultimate resource for IT courses, community support, and career roadmaps.
+    </p>
+    <div class="flex gap-4">
+      <a href="{% url 'tutorials' %}" class="bg-primary px-6 py-3 rounded-button text-white hover:bg-primary/90">Explore
+        Tutorials</a>
+      <a href="{% url 'roadmap' %}"
+        class="bg-white text-gray-800 px-6 py-3 rounded-button font-medium hover:bg-gray-100">View Roadmaps</a>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-12 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Heading -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Why Choose Technology Evolution Portal?</h2>
+      <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+        Designed specifically for Bangladeshi students and tech professionals, our platform offers
+        everything you need to succeed in the tech industry.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-gray-50 p-6 rounded-lg border border-gray-100">
+        <div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+          <i class="ri-book-open-line ri-lg"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-gray-900">
+          Comprehensive Tutorials
+        </h3>
+        <p class="text-gray-600">
+          Access detailed, step-by-step tutorials across multiple tech
+          disciplines, from beginner to advanced levels.
+        </p>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg border border-gray-100">
+        <div class="w-12 h-12 flex items-center justify-center bg-secondary/10 text-secondary rounded-full mb-4">
+          <i class="ri-road-map-line ri-lg"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-gray-900">
+          Career Roadmaps
+        </h3>
+        <p class="text-gray-600">
+          Follow structured learning paths designed to help you achieve your
+          career goals in the tech industry.
+        </p>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg border border-gray-100">
+        <div class="w-12 h-12 flex items-center justify-center bg-purple-100 text-purple-600 rounded-full mb-4">
+          <i class="ri-team-line ri-lg"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-gray-900">
+          Active Community
+        </h3>
+        <p class="text-gray-600">
+          Connect with like-minded individuals, share knowledge, and
+          collaborate on projects within our supportive community.
+        </p>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg border border-gray-100">
+        <div class="w-12 h-12 flex items-center justify-center bg-amber-100 text-amber-600 rounded-full mb-4">
+          <i class="ri-newspaper-line ri-lg"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-gray-900">
+          Tech News & Trends
+        </h3>
+        <p class="text-gray-600">
+          Stay updated with the latest tech news, industry trends, and
+          innovations relevant to the Bangladeshi tech ecosystem.
+        </p>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg border border-gray-100">
+        <div class="w-12 h-12 flex items-center justify-center bg-rose-100 text-rose-600 rounded-full mb-4">
+          <i class="ri-chat-4-line ri-lg"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-gray-900">
+          AI-Powered Support
+        </h3>
+        <p class="text-gray-600">
+          Get instant help with our AI chatbot, designed to answer your
+          questions and guide you through difficult concepts.
+        </p>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg border border-gray-100">
+        <div class="w-12 h-12 flex items-center justify-center bg-teal-100 text-teal-600 rounded-full mb-4">
+          <i class="ri-user-follow-line ri-lg"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-gray-900">
+          Personalized Learning
+        </h3>
+        <p class="text-gray-600">
+          Track your progress, set goals, and receive personalized
+          recommendations based on your interests and skill level.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Roadmap Preview Section -->
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-gray-900 mb-10 text-center">
+      🚀 Featured Roadmaps
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {% for roadmap in roadmaps %}
+      <div class="bg-white shadow rounded-lg p-6 hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold text-gray-800">{{ roadmap.title }}</h3>
+        <p class="text-gray-600 mt-2">{{ roadmap.description|truncatewords:20 }}</p>
+        <p class="mt-3 text-sm text-gray-500">
+          Duration: {{ roadmap.duration_weeks }} weeks | Level: {{ roadmap.level }}
+        </p>
+      </div>
+      
+      {% empty %}
+      <p class="text-gray-500 text-center col-span-3">No roadmaps available yet.</p>
+      {% endfor %}
+    </div>
+
+    <!-- Button to full roadmap page -->
+    <div class="text-center mt-10">
+      <a href="{% url 'roadmap' %}"
+        class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90">
+        View All Roadmaps
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- News Preview Section -->
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-gray-900 mb-10 text-center">
+      📰 Latest Tech News
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {% for article in news_articles %}
+      <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 hover:shadow-md transition">
+        <h3 class="text-xl font-semibold text-gray-800">{{ article.title }}</h3>
+        <p class="text-gray-600 mt-2">{{ article.summary|truncatewords:20 }}</p>
+        <p class="text-sm text-gray-500 mt-3">Published: {{ article.published_date }}</p>
+      </div>
+      {% empty %}
+      <p class="text-gray-500 text-center col-span-3">No news available yet.</p>
+      {% endfor %}
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="{% url 'news' %}" class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90">
+        View All News
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
