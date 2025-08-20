@@ -1,34 +1,50 @@
 {% extends "home/base.html" %}
-{% block title %}Home - TEP{% endblock %}
+{% load static %}
+
+{% block title %}Home - Technology Evolution Portal{% endblock %}
 
 {% block content %}
+
 <!-- Hero Section -->
-<section class="hero-section relative bg-gray-800 text-white">
-  <div class="container mx-auto px-4 py-20 md:py-32">
+<section class="hero-section relative text-white h-screen">
+  <!-- Background image -->
+  <div class="absolute inset-0">
+    <img src="{% static 'home/images/hero-bg.jpg' %}" alt="Hero Background" class="w-full h-full object-cover">
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-transparent"></div>
+  </div>
+
+  <!-- Hero content -->
+  <div class="container mx-auto px-4 py-20 md:py-32 relative z-10 flex flex-col items-center text-center">
     <h1 class="text-4xl md:text-5xl font-bold mb-6">
       Empowering Tech Journeys in Bangladesh
     </h1>
-    <p class="text-lg md:text-xl mb-8 text-gray-200">
+    <p class="text-lg md:text-xl mb-8 text-gray-100 max-w-2xl">
       Your ultimate resource for IT courses, community support, and career roadmaps.
     </p>
-    <div class="flex gap-4">
-      <a href="{% url 'tutorials' %}" class="bg-primary px-6 py-3 rounded-button text-white hover:bg-primary/90">Explore
-        Tutorials</a>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a href="{% url 'tutorials' %}" class="bg-primary px-6 py-3 rounded-button text-white hover:bg-primary/90">
+        Explore Tutorials
+      </a>
       <a href="{% url 'roadmap' %}"
-        class="bg-white text-gray-800 px-6 py-3 rounded-button font-medium hover:bg-gray-100">View Roadmaps</a>
+        class="bg-white text-gray-800 px-6 py-3 rounded-button font-medium hover:bg-gray-100">
+        View Roadmaps
+      </a>
     </div>
   </div>
 </section>
 
 <!-- Features Section -->
-<section class="py-12 bg-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <!-- Heading -->
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
     <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Why Choose Technology Evolution Portal?</h2>
-      <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
-        Designed specifically for Bangladeshi students and tech professionals, our platform offers
-        everything you need to succeed in the tech industry.
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">
+        Why Choose Technology Evolution Portal?
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Designed specifically for Bangladeshi students and tech
+        professionals, our platform offers everything you need to succeed in
+        the tech industry.
       </p>
     </div>
     <div class="grid md:grid-cols-3 gap-8">
@@ -108,48 +124,411 @@
   </div>
 </section>
 
-
-
-
-<!-- Roadmap Preview Section -->
+<!-- Tutorial Categories Section -->
 <section class="py-16 bg-gray-50">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-gray-900 mb-10 text-center">
-      🚀 Featured Roadmaps
-    </h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {% for roadmap in roadmaps %}
-      <div class="bg-white shadow rounded-lg p-6 hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold text-gray-800">{{ roadmap.title }}</h3>
-        <p class="text-gray-600 mt-2">{{ roadmap.description|truncatewords:20 }}</p>
-        <p class="mt-3 text-sm text-gray-500">
-          Duration: {{ roadmap.duration_weeks }} weeks | Level: {{ roadmap.level }}
+    <div class="flex justify-between items-center mb-12">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          Explore Tutorial Categories
+        </h2>
+        <p class="text-lg text-gray-600">
+          Dive into our comprehensive collection of tutorials across various
+          tech domains.
         </p>
       </div>
-      
-      {% empty %}
-      <p class="text-gray-500 text-center col-span-3">No roadmaps available yet.</p>
-      {% endfor %}
-    </div>
-
-    <!-- Button to full roadmap page -->
-    <div class="text-center mt-10">
-      <a href="{% url 'roadmap' %}"
-        class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90">
-        View All Roadmaps
+      <a href="#" class="text-primary font-medium flex items-center gap-1 hover:underline">
+        View All Categories
+        <i class="ri-arrow-right-line"></i>
       </a>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Competitive Programming -->
+      <div
+        class="bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transition transform hover:-translate-y-1 flex flex-col">
+        <div class="h-40"
+          style="background-image: url('https://readdy.ai/api/search-image?query=competitive%20programming%20concept%20with%20code%20snippets%2C%20algorithms%20visualization%2C%20problem-solving%20diagrams%2C%20blue%20and%20white%20color%20scheme%2C%20modern%20minimal%20design%2C%20professional%20look%2C%20clean%20composition&width=400&height=200&seq=cat1&orientation=landscape'); background-size: cover; background-position: center;">
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="text-xl font-semibold text-gray-900">
+              Competitive Programming
+            </h3>
+            <div class="w-8 h-8 flex items-center justify-center bg-blue-100 text-blue-600 rounded-full">
+              <i class="ri-code-s-slash-line"></i>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Master algorithms, data structures, and problem-solving
+            techniques for coding competitions.
+          </p>
+          <div class="flex justify-between items-center text-sm text-gray-500 mb-3">
+            <span>42 Tutorials</span>
+            <span class="flex items-center gap-1">
+              <i class="ri-user-line"></i> 3.2K Learners
+            </span>
+          </div>
+          <div class="mb-4">
+            <div class="flex justify-between text-xs mb-1">
+              <span>Progress</span>
+              <span class="font-medium">35%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill bg-blue-500" style="width: 35%;"></div>
+            </div>
+          </div>
+          <div class="flex justify-between">
+            <div class="flex items-center gap-1 text-xs bg-gray-100 px-2 py-1 rounded-full">
+              <i class="ri-bar-chart-line text-yellow-600"></i>
+              <span>Intermediate</span>
+            </div>
+            <a href="{% url 'roadmap' %}"
+              class="text-primary font-medium text-sm hover:underline whitespace-nowrap">
+              Start Learning
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Web Development -->
+      <div
+        class="bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transition transform hover:-translate-y-1 flex flex-col">
+        <div class="h-40"
+          style="background-image: url('https://readdy.ai/api/search-image?query=web%20development%20concept%20with%20HTML%2C%20CSS%2C%20JavaScript%20code%2C%20responsive%20design%20elements%2C%20browser%20window%20mockups%2C%20clean%20modern%20design%2C%20professional%20look%2C%20blue%20and%20white%20color%20scheme&width=400&height=200&seq=cat2&orientation=landscape'); background-size: cover; background-position: center;">
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="text-xl font-semibold text-gray-900">
+              Web Development
+            </h3>
+            <div class="w-8 h-8 flex items-center justify-center bg-indigo-100 text-indigo-600 rounded-full">
+              <i class="ri-html5-line"></i>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Learn frontend and backend technologies to build modern,
+            responsive websites and web applications.
+          </p>
+          <div class="flex justify-between items-center text-sm text-gray-500 mb-3">
+            <span>78 Tutorials</span>
+            <span class="flex items-center gap-1">
+              <i class="ri-user-line"></i> 5.7K Learners
+            </span>
+          </div>
+          <div class="mb-4">
+            <div class="flex justify-between text-xs mb-1">
+              <span>Progress</span>
+              <span class="font-medium">65%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill bg-indigo-500" style="width: 65%;"></div>
+            </div>
+          </div>
+          <div class="flex justify-between">
+            <div class="flex items-center gap-1 text-xs bg-gray-100 px-2 py-1 rounded-full">
+              <i class="ri-bar-chart-line text-green-600"></i>
+              <span>All Levels</span>
+            </div>
+            <a href="{% url 'roadmap' %}"
+              class="text-primary font-medium text-sm hover:underline whitespace-nowrap">
+              Start Learning
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Artificial Intelligence -->
+      <div
+        class="bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transition transform hover:-translate-y-1 flex flex-col">
+        <div class="h-40"
+          style="background-image: url('https://readdy.ai/api/search-image?query=artificial%20intelligence%20concept%20with%20neural%20networks%20visualization%2C%20machine%20learning%20algorithms%2C%20AI%20robot%20elements%2C%20futuristic%20design%2C%20blue%20and%20purple%20color%20scheme%2C%20professional%20look%2C%20clean%20composition&width=400&height=200&seq=cat3&orientation=landscape'); background-size: cover; background-position: center;">
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="text-xl font-semibold text-gray-900">
+              Artificial Intelligence
+            </h3>
+            <div class="w-8 h-8 flex items-center justify-center bg-purple-100 text-purple-600 rounded-full">
+              <i class="ri-brain-line"></i>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Explore AI concepts, neural networks, and build intelligent
+            systems that can learn and adapt.
+          </p>
+          <div class="flex justify-between items-center text-sm text-gray-500 mb-3">
+            <span>36 Tutorials</span>
+            <span class="flex items-center gap-1">
+              <i class="ri-user-line"></i> 2.8K Learners
+            </span>
+          </div>
+          <div class="mb-4">
+            <div class="flex justify-between text-xs mb-1">
+              <span>Progress</span>
+              <span class="font-medium">20%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill bg-purple-500" style="width: 20%;"></div>
+            </div>
+          </div>
+          <div class="flex justify-between">
+            <div class="flex items-center gap-1 text-xs bg-gray-100 px-2 py-1 rounded-full">
+              <i class="ri-bar-chart-line text-red-600"></i>
+              <span>Advanced</span>
+            </div>
+            <a href="{% url 'roadmap' %}"
+              class="text-primary font-medium text-sm hover:underline whitespace-nowrap">
+              Start Learning
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Full Stack Development -->
+      <div
+        class="bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transition transform hover:-translate-y-1 flex flex-col">
+        <div class="h-40"
+          style="background-image: url('https://readdy.ai/api/search-image?query=full%20stack%20development%20concept%20with%20frontend%20and%20backend%20code%2C%20database%20schemas%2C%20API%20connections%2C%20modern%20tech%20stack%20visualization%2C%20clean%20professional%20design%2C%20blue%20and%20green%20color%20scheme&width=400&height=200&seq=cat4&orientation=landscape'); background-size: cover; background-position: center;">
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="text-xl font-semibold text-gray-900">
+              Full Stack Development
+            </h3>
+            <div class="w-8 h-8 flex items-center justify-center bg-teal-100 text-teal-600 rounded-full">
+              <i class="ri-stack-line"></i>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Master both frontend and backend development to build complete
+            web applications from scratch.
+          </p>
+          <div class="flex justify-between items-center text-sm text-gray-500 mb-3">
+            <span>54 Tutorials</span>
+            <span class="flex items-center gap-1">
+              <i class="ri-user-line"></i> 4.5K Learners
+            </span>
+          </div>
+          <div class="mb-4">
+            <div class="flex justify-between text-xs mb-1">
+              <span>Progress</span>
+              <span class="font-medium">45%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill bg-teal-500" style="width: 45%;"></div>
+            </div>
+          </div>
+          <div class="flex justify-between">
+            <div class="flex items-center gap-1 text-xs bg-gray-100 px-2 py-1 rounded-full">
+              <i class="ri-bar-chart-line text-yellow-600"></i>
+              <span>Intermediate</span>
+            </div>
+            <a href="{% url 'roadmap' %}"
+              class="text-primary font-medium text-sm hover:underline whitespace-nowrap">
+              Start Learning
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Linux -->
+      <div
+        class="bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transition transform hover:-translate-y-1 flex flex-col">
+        <div class="h-40"
+          style="background-image: url('https://readdy.ai/api/search-image?query=linux%20operating%20system%20concept%20with%20terminal%20commands%2C%20penguin%20logo%2C%20server%20administration%2C%20command%20line%20interface%2C%20system%20architecture%20diagrams%2C%20clean%20professional%20design&width=400&height=200&seq=cat5&orientation=landscape'); background-size: cover; background-position: center;">
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="text-xl font-semibold text-gray-900">Linux</h3>
+            <div class="w-8 h-8 flex items-center justify-center bg-orange-100 text-orange-600 rounded-full">
+              <i class="ri-terminal-line"></i>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Learn Linux administration, shell scripting, and how to navigate
+            the command line interface.
+          </p>
+          <div class="flex justify-between items-center text-sm text-gray-500 mb-3">
+            <span>32 Tutorials</span>
+            <span class="flex items-center gap-1">
+              <i class="ri-user-line"></i> 2.3K Learners
+            </span>
+          </div>
+          <div class="mb-4">
+            <div class="flex justify-between text-xs mb-1">
+              <span>Progress</span>
+              <span class="font-medium">55%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill bg-orange-500" style="width: 55%;"></div>
+            </div>
+          </div>
+          <div class="flex justify-between">
+            <div class="flex items-center gap-1 text-xs bg-gray-100 px-2 py-1 rounded-full">
+              <i class="ri-bar-chart-line text-blue-600"></i>
+              <span>Beginner</span>
+            </div>
+            <a href="{% url 'roadmap' %}"
+              class="text-primary font-medium text-sm hover:underline whitespace-nowrap">
+              Start Learning
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Cloud Computing -->
+      <div
+        class="bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transition transform hover:-translate-y-1 flex flex-col">
+        <div class="h-40"
+          style="background-image: url('https://readdy.ai/api/search-image?query=cloud%20computing%20concept%20with%20server%20racks%2C%20cloud%20infrastructure%20diagrams%2C%20network%20connections%2C%20data%20centers%2C%20modern%20minimal%20design%2C%20blue%20and%20white%20color%20scheme%2C%20professional%20look&width=400&height=200&seq=cat6&orientation=landscape'); background-size: cover; background-position: center;">
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="text-xl font-semibold text-gray-900">
+              Cloud Computing
+            </h3>
+            <div class="w-8 h-8 flex items-center justify-center bg-blue-100 text-blue-600 rounded-full">
+              <i class="ri-cloud-line"></i>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Discover cloud platforms, infrastructure as code, and deploy
+            scalable applications in the cloud.
+          </p>
+          <div class="flex justify-between items-center text-sm text-gray-500 mb-3">
+            <span>28 Tutorials</span>
+            <span class="flex items-center gap-1">
+              <i class="ri-user-line"></i> 1.9K Learners
+            </span>
+          </div>
+          <div class="mb-4">
+            <div class="flex justify-between text-xs mb-1">
+              <span>Progress</span>
+              <span class="font-medium">30%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill bg-blue-500" style="width: 30%;"></div>
+            </div>
+          </div>
+          <div class="flex justify-between">
+            <div class="flex items-center gap-1 text-xs bg-gray-100 px-2 py-1 rounded-full">
+              <i class="ri-bar-chart-line text-yellow-600"></i>
+              <span>Intermediate</span>
+            </div>
+            <a href="{% url 'roadmap' %}"
+              class="text-primary font-medium text-sm hover:underline whitespace-nowrap">
+              Start Learning
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Cybersecurity -->
+      <div
+        class="bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transition transform hover:-translate-y-1 flex flex-col">
+        <div class="h-40"
+          style="background-image: url('https://readdy.ai/api/search-image?query=cybersecurity%20concept%20with%20digital%20lock%2C%20shield%20protection%2C%20network%20security%2C%20encryption%20visualization%2C%20hacking%20defense%2C%20blue%20and%20dark%20color%20scheme%2C%20professional%20look&width=400&height=200&seq=cat7&orientation=landscape'); background-size: cover; background-position: center;">
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="text-xl font-semibold text-gray-900">
+              Cybersecurity
+            </h3>
+            <div class="w-8 h-8 flex items-center justify-center bg-red-100 text-red-600 rounded-full">
+              <i class="ri-shield-keyhole-line"></i>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Learn to protect systems, networks, and data from digital
+            attacks and security threats.
+          </p>
+          <div class="flex justify-between items-center text-sm text-gray-500 mb-3">
+            <span>38 Tutorials</span>
+            <span class="flex items-center gap-1">
+              <i class="ri-user-line"></i> 2.6K Learners
+            </span>
+          </div>
+          <div class="mb-4">
+            <div class="flex justify-between text-xs mb-1">
+              <span>Progress</span>
+              <span class="font-medium">15%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill bg-red-500" style="width: 15%;"></div>
+            </div>
+          </div>
+          <div class="flex justify-between">
+            <div class="flex items-center gap-1 text-xs bg-gray-100 px-2 py-1 rounded-full">
+              <i class="ri-bar-chart-line text-red-600"></i>
+              <span>Advanced</span>
+            </div>
+            <a href="{% url 'roadmap' %}"
+            class="text-primary font-medium text-sm hover:underline whitespace-nowrap">
+            Start Learning
+          </a>
+          </div>
+        </div>
+      </div>
+      <!-- Data Science -->
+      <div
+        class="bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transition transform hover:-translate-y-1 flex flex-col">
+        <div class="h-40"
+          style="background-image: url('https://readdy.ai/api/search-image?query=data%20science%20concept%20with%20statistical%20graphs%2C%20data%20visualization%2C%20machine%20learning%20models%2C%20analytics%20dashboard%2C%20big%20data%20processing%2C%20blue%20and%20purple%20color%20scheme%2C%20professional%20look&width=400&height=200&seq=cat8&orientation=landscape'); background-size: cover; background-position: center;">
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="text-xl font-semibold text-gray-900">
+              Data Science
+            </h3>
+            <div class="w-8 h-8 flex items-center justify-center bg-green-100 text-green-600 rounded-full">
+              <i class="ri-bar-chart-box-line"></i>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Master data analysis, visualization, and machine learning to
+            extract insights from complex datasets.
+          </p>
+          <div class="flex justify-between items-center text-sm text-gray-500 mb-3">
+            <span>45 Tutorials</span>
+            <span class="flex items-center gap-1">
+              <i class="ri-user-line"></i> 3.8K Learners
+            </span>
+          </div>
+          <div class="mb-4">
+            <div class="flex justify-between text-xs mb-1">
+              <span>Progress</span>
+              <span class="font-medium">40%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill bg-green-500" style="width: 40%;"></div>
+            </div>
+          </div>
+          <div class="flex justify-between">
+            <div class="flex items-center gap-1 text-xs bg-gray-100 px-2 py-1 rounded-full">
+              <i class="ri-bar-chart-line text-yellow-600"></i>
+              <span>Intermediate</span>
+            </div>
+            <!-- <button 
+              class="text-primary font-medium text-sm hover:underline whitespace-nowrap"
+            >
+              Start Learning
+            </button> -->
+            <a href="{% url 'roadmap' %}"
+              class="text-primary font-medium text-sm hover:underline whitespace-nowrap">
+              Start Learning
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
+
+
+
+
+
+
+
 <!-- News Preview Section -->
 <section class="py-16 bg-white">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-gray-900 mb-10 text-center">
-      📰 Latest Tech News
-    </h2>
-
+    <h2 class="text-3xl font-bold text-gray-900 mb-10 text-center">📰 Latest Tech News</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {% for article in news_articles %}
       <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 hover:shadow-md transition">
@@ -161,13 +540,199 @@
       <p class="text-gray-500 text-center col-span-3">No news available yet.</p>
       {% endfor %}
     </div>
+  </div>
+</section>
 
-    <div class="text-center mt-10">
-      <a href="{% url 'news' %}" class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90">
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center mb-12">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          Latest Tech News
+        </h2>
+        <p class="text-lg text-gray-600">
+          Stay updated with the latest tech news, industry trends, and
+          innovations.
+        </p>
+      </div>
+      <a href="{% url 'news' %}" class="text-primary font-medium flex items-center gap-1 hover:underline">
         View All News
+        <i class="ri-arrow-right-line"></i>
       </a>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="md:col-span-2">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+          <div class="h-64 overflow-hidden">
+            <img
+              src="https://readdy.ai/api/search-image?query=tech%20conference%20in%20Bangladesh%2C%20modern%20convention%20center%2C%20people%20attending%20tech%20presentations%2C%20professional%20setting%2C%20high%20quality%20image&width=800&height=400&seq=news1&orientation=landscape"
+              alt="Tech Conference" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+              <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">Industry</span>
+              <span>May 20, 2025</span>
+              <span>•</span>
+              <span>5 min read</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">
+              Bangladesh's Tech Industry Set to Grow 25% in 2025
+            </h3>
+            <p class="text-gray-600 mb-4">
+              The tech industry in Bangladesh is experiencing unprecedented
+              growth, with projections indicating a 25% expansion in 2025.
+              This growth is fueled by increasing foreign investments,
+              government initiatives, and a rising pool of skilled tech
+              professionals.
+            </p>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gray-200 flex-shrink-0 overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20south%20asian%20woman%20journalist%2C%2030s%2C%20professional%20attire%2C%20neutral%20background&width=80&height=80&seq=author1&orientation=squarish"
+                    alt="Author" class="w-full h-full object-cover" />
+                </div>
+                <span class="text-sm font-medium text-gray-900">Samira Rahman</span>
+              </div>
+              <button class="text-primary font-medium hover:underline">
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-6">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+          <div class="p-5">
+            <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+              <span class="bg-green-100 text-green-800 px-2 py-0.5 rounded-full">Startups</span>
+              <span>May 18, 2025</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
+              Dhaka-Based Fintech Startup Raises $12M in Series A
+            </h3>
+            <p class="text-gray-600 mb-4">
+              PayEase, a Dhaka-based fintech startup, has secured $12
+              million in Series A funding led by global venture capital
+              firms. The company aims to revolutionize digital payments in
+              Bangladesh.
+            </p>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gray-200 flex-shrink-0 overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20south%20asian%20man%20journalist%2C%2040s%2C%20professional%20attire%2C%20neutral%20background&width=80&height=80&seq=author2&orientation=squarish"
+                    alt="Author" class="w-full h-full object-cover" />
+                </div>
+                <span class="text-sm font-medium text-gray-900">Tanvir Ahmed</span>
+              </div>
+              <button class="text-primary font-medium hover:underline">
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+          <div class="p-5">
+            <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+              <span class="bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full">Education</span>
+              <span>May 15, 2025</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
+              Government Launches New IT Education Initiative
+            </h3>
+            <p class="text-gray-600 mb-4">
+              The Bangladesh government has launched a nationwide IT
+              education initiative aimed at training 100,000 students in
+              programming and digital skills over the next two years.
+            </p>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gray-200 flex-shrink-0 overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20south%20asian%20woman%20journalist%2C%2020s%2C%20professional%20attire%2C%20neutral%20background&width=80&height=80&seq=author3&orientation=squarish"
+                    alt="Author" class="w-full h-full object-cover" />
+                </div>
+                <span class="text-sm font-medium text-gray-900">Nadia Islam</span>
+              </div>
+              <button class="text-primary font-medium hover:underline">
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+          <div class="p-5">
+            <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+              <span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">Innovation</span>
+              <span>May 12, 2025</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
+              Bangladeshi Developer Creates AI Tool for Bangla Language
+            </h3>
+            <p class="text-gray-600 mb-4">
+              A team of Bangladeshi developers has created an advanced AI
+              tool that can process and understand Bangla language with
+              unprecedented accuracy, opening new possibilities for local
+              tech solutions.
+            </p>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gray-200 flex-shrink-0 overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20south%20asian%20man%20journalist%2C%2030s%2C%20professional%20attire%2C%20neutral%20background&width=80&height=80&seq=author4&orientation=squarish"
+                    alt="Author" class="w-full h-full object-cover" />
+                </div>
+                <span class="text-sm font-medium text-gray-900">Rafiq Hasan</span>
+              </div>
+              <button class="text-primary font-medium hover:underline">
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+
+
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="bg-primary rounded-xl p-8 md:p-12">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">
+          Stay Updated with Tech Evolution
+        </h2>
+        <p class="text-lg text-white/90 mb-8">
+          Subscribe to our newsletter and receive the latest tutorials, tech
+          news, and career opportunities directly in your inbox.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+          <input
+            type="email"
+            placeholder="Enter your email address"
+            class="flex-1 px-4 py-3 rounded-button border-none focus:outline-none focus:ring-2 focus:ring-white/30 text-gray-800"
+          />
+          <button
+            class="bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-button font-medium whitespace-nowrap"
+          >
+            Subscribe Now
+          </button>
+        </div>
+        <p class="text-sm text-white/70 mt-4">
+          By subscribing, you agree to our Privacy Policy and consent to
+          receive updates from us.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
 
 {% endblock %}

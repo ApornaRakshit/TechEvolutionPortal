@@ -7,8 +7,21 @@ from django.db import models
 class Roadmap(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    icon = models.CharField(max_length=50, default="🌐")  # optional (emoji/icon name)
+    icon = models.CharField(max_length=50, default="🌐")  # Optional
     link = models.URLField(blank=True, null=True)
+
+    # New fields for your dynamic UI
+    duration_weeks = models.IntegerField(default=4)  # Example: 4 weeks
+    level = models.CharField(max_length=50, choices=[
+        ('Beginner', 'Beginner'),
+        ('Intermediate', 'Intermediate'),
+        ('Advanced', 'Advanced'),
+        ('All Levels', 'All Levels'),
+    ], default='Beginner')
+    tutorial_count = models.IntegerField(default=0)
+    learners_count = models.IntegerField(default=0)
+    progress = models.IntegerField(default=0)  # % Progress
+    image = models.ImageField(upload_to='roadmaps/', blank=True, null=True)
 
     def __str__(self):
         return self.title
