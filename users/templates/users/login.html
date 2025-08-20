@@ -1,0 +1,37 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-green-50 px-4 py-10">
+  <div class="w-full max-w-md bg-white p-8 sm:p-12 rounded-lg shadow-xl">
+    
+    <h2 class="text-3xl font-bold text-center mb-4 text-primary">Welcome Back</h2>
+    <p class="text-gray-500 text-center mb-8">Log in to access your personalized learning dashboard!</p>
+
+    <form method="post" class="space-y-6">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+
+      {% for field in form %}
+        <div class="flex flex-col">
+          {{ field.label_tag }}
+          {{ field }}
+          {% if field.errors %}
+            <p class="text-red-500 text-sm mt-1">{{ field.errors }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      <button type="submit"
+        class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition">
+        Login
+      </button>
+    </form>
+
+    <p class="mt-6 text-center text-gray-600">
+      Don’t have an account?
+      <a href="{% url 'signup' %}" class="text-primary font-medium hover:underline">Sign Up</a>
+    </p>
+
+  </div>
+</div>
+{% endblock %}

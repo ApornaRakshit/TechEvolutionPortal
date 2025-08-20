@@ -1,0 +1,39 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block title %}Signup | Technology Evolution Portal{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-green-50 px-4 py-10">
+  <div class="w-full max-w-md bg-white shadow-xl rounded-xl p-8 sm:p-12">
+    
+    <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Create Your Account</h2>
+    <p class="text-gray-500 text-center mb-8">Join Technology Evolution Portal to track your learning and explore new IT trends!</p>
+
+    <form method="post" class="space-y-6">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      {% for field in form %}
+        <div>
+          {{ field.label_tag }}
+          {{ field }}
+          {% if field.errors %}
+            <p class="text-red-500 text-sm mt-1">{{ field.errors }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      <button type="submit"
+        class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition">
+        Sign Up
+      </button>
+    </form>
+
+    <p class="mt-6 text-center text-gray-500">
+      Already have an account?
+      <a href="{% url 'login' %}" class="text-primary font-medium hover:underline">Sign In</a>
+    </p>
+
+  </div>
+</div>
+{% endblock %}
